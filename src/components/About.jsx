@@ -7,9 +7,6 @@ import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 
 // ─── SERVICE CARD (carousel tile) ────────────────────────────────────────────
-// Expects each service: { title, icon, color, accent, description, highlights }
-// `color` & `accent` are hex strings — add them to your constants/index.js
-// If not present, falls back to a default teal/purple gradient.
 
 const DEFAULT_COLORS = [
   { color: "#0f3460", accent: "#533483" },
@@ -116,13 +113,12 @@ const ServiceCard = ({ service, index, onClick }) => {
 // ─── DETAIL PANEL ─────────────────────────────────────────────────────────────
 const DetailPanel = ({ service, allServices, onClose, onSelect }) => {
   const [showMore, setShowMore] = useState(false);
-  const { color, accent } =
-    service.color
-      ? service
-      : DEFAULT_COLORS[
-          allServices.findIndex((s) => s.title === service.title) %
-            DEFAULT_COLORS.length
-        ];
+  const { color, accent } = service.color
+    ? service
+    : DEFAULT_COLORS[
+        allServices.findIndex((s) => s.title === service.title) %
+          DEFAULT_COLORS.length
+      ];
 
   return (
     <motion.div
@@ -240,7 +236,12 @@ const DetailPanel = ({ service, allServices, onClose, onSelect }) => {
         key={`info-${service.title}`}
         initial={{ x: 24, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 180, damping: 22, delay: 0.05 }}
+        transition={{
+          type: "spring",
+          stiffness: 180,
+          damping: 22,
+          delay: 0.05,
+        }}
         className="flex flex-col justify-start relative overflow-hidden"
         style={{
           flex: 1,
@@ -288,7 +289,12 @@ const DetailPanel = ({ service, allServices, onClose, onSelect }) => {
           initial={{ y: 10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           className="text-white font-black leading-tight"
-          style={{ fontSize: 22, marginBottom: 6, marginTop: 4, fontFamily: "inherit" }}
+          style={{
+            fontSize: 22,
+            marginBottom: 6,
+            marginTop: 4,
+            fontFamily: "inherit",
+          }}
         >
           {service.title}
         </motion.h3>
@@ -446,7 +452,11 @@ const About = () => {
                     key={label}
                     onClick={() => scroll(dir)}
                     className="text-secondary text-sm hover:text-white transition-colors"
-                    style={{ background: "none", border: "none", cursor: "pointer" }}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                    }}
                   >
                     {label}
                   </button>
