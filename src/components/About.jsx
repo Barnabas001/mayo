@@ -41,50 +41,50 @@ const ServiceCard = ({ service, index, onClick }) => {
       className="relative cursor-pointer"
       style={{
         background: `linear-gradient(145deg, ${accent}, ${color})`,
-        borderRadius: 20,
-        minWidth: 160,
-        flex: "0 0 170px",
+        borderRadius: 24,
+        minWidth: 220,
+        flex: "0 0 240px",
         overflow: "visible",
-        padding: "0 0 20px 0",
+        padding: "0 0 28px 0",
         boxShadow: hovered
-          ? `0 24px 48px ${color}88`
-          : `0 8px 24px ${color}55`,
+          ? `0 28px 56px ${color}99`
+          : `0 10px 30px ${color}66`,
         transition: "box-shadow 0.3s ease",
       }}
-      whileHover={{ scale: 1.05, y: -8 }}
+      whileHover={{ scale: 1.05, y: -10 }}
       whileTap={{ scale: 0.97 }}
     >
       {/* Icon floating above card */}
       <motion.div
         className="absolute left-1/2 -translate-x-1/2 z-10"
-        style={{ top: -46 }}
-        animate={{ y: hovered ? -8 : 0 }}
+        style={{ top: -58 }}
+        animate={{ y: hovered ? -10 : 0 }}
         transition={{ type: "spring", stiffness: 300 }}
       >
         <div
           className="flex items-center justify-center rounded-full"
           style={{
-            width: 92,
-            height: 92,
+            width: 116,
+            height: 116,
             background: `radial-gradient(circle at 35% 35%, ${accent}cc, ${color})`,
-            boxShadow: `0 8px 28px ${color}88`,
-            border: `2px solid rgba(255,255,255,0.15)`,
+            boxShadow: `0 10px 36px ${color}99`,
+            border: `2px solid rgba(255,255,255,0.18)`,
           }}
         >
           <img
             src={service.icon}
             alt={service.title}
-            className="w-10 h-10 object-contain"
-            style={{ filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.3))" }}
+            className="w-14 h-14 object-contain"
+            style={{ filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.4))" }}
           />
         </div>
       </motion.div>
 
       {/* Card body */}
-      <div style={{ paddingTop: 60, paddingLeft: 16, paddingRight: 16 }}>
+      <div style={{ paddingTop: 72, paddingLeft: 20, paddingRight: 20 }}>
         <h3
           className="text-white font-bold text-center leading-tight"
-          style={{ fontSize: 16, marginBottom: 4 }}
+          style={{ fontSize: 19, marginBottom: 6 }}
         >
           {service.title}
         </h3>
@@ -95,16 +95,16 @@ const ServiceCard = ({ service, index, onClick }) => {
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 4 }}
-              className="flex items-center justify-center gap-1 mt-3"
+              className="flex items-center justify-center gap-1 mt-4"
               style={{
                 color: "rgba(255,255,255,0.9)",
-                fontSize: 10,
+                fontSize: 11,
                 fontWeight: 700,
-                letterSpacing: 1.2,
+                letterSpacing: 1.4,
                 textTransform: "uppercase",
               }}
             >
-              VIEW MORE <span style={{ fontSize: 13 }}>›</span>
+              VIEW MORE <span style={{ fontSize: 15 }}>›</span>
             </motion.div>
           )}
         </AnimatePresence>
@@ -420,9 +420,9 @@ const About = () => {
             >
               <div
                 ref={scrollRef}
-                className="flex gap-5 overflow-x-auto pb-4"
+                className="flex gap-8 overflow-x-auto pb-6"
                 style={{
-                  paddingTop: 56, // headroom for floating icons
+                  paddingTop: 72, // headroom for bigger floating icons
                   scrollbarWidth: "thin",
                 }}
               >
