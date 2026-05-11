@@ -441,27 +441,6 @@ const About = () => {
                   />
                 ))}
               </div>
-
-              {/* Prev / Next scroll controls */}
-              <div className="flex justify-end gap-4 mt-4">
-                {[
-                  { label: "‹ Prev", dir: -1 },
-                  { label: "Next ›", dir: 1 },
-                ].map(({ label, dir }) => (
-                  <button
-                    key={label}
-                    onClick={() => scroll(dir)}
-                    className="text-secondary text-sm hover:text-white transition-colors"
-                    style={{
-                      background: "none",
-                      border: "none",
-                      cursor: "pointer",
-                    }}
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
             </motion.div>
           )}
         </AnimatePresence>
