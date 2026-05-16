@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // ─── Character image imports ──────────────────────────────────────────────────
 import samurai1 from "../assets/mayo landing image/Samurai 1.png";
-import ninja1 from "../assets/mayo landing image/Ninja 1.png";
+import ninja1 from "../assets/mayo landing image/Ninja 1.webp";
 import samuraiAction from "../assets/mayo landing image/Smaurai Action.png";
 
 // ─── Slide Data — Mayokun's identity spread across 3 slides ──────────────────
