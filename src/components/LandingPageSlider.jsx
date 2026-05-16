@@ -1,26 +1,29 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+// ─── Character image imports ──────────────────────────────────────────────────
+import samurai1 from "../assets/mayo landing image/Samurai 1.png";
+import ninja1 from "../assets/mayo landing image/Ninja 1.png";
+import samuraiAction from "../assets/mayo landing image/Smaurai Action.png";
+
 // ─── Slide Data — Mayokun's identity spread across 3 slides ──────────────────
 const SLIDES = [
   {
     id: 0,
-    // Slide 1: The name & title — the intro
     eyebrow: "WELCOME TO MY PORTFOLIO",
     headline: ["Hi, I'm", "Mayokun", "Alemika"],
-    accentLine: "Mayokun", // which headline line gets accent color
+    accentLine: "Mayokun",
     subtext: "Senior 3D Developer & Real-Time XR Specialist",
     cta: "SEE MY WORK",
     ctaHref: "#about",
     bg: "radial-gradient(ellipse 90% 70% at 65% 75%, #0d1a3a 0%, #050d1f 45%, #020509 100%)",
     triangleColor: "#0066ff",
     triangleColor2: "#00F5FF",
-    robotStyle: { right: "10%", bottom: "0%", height: "88%" },
-    robotTone: "teal",
+    image: samurai1,
+    glowColor: "rgba(0,200,220,0.35)",
   },
   {
     id: 1,
-    // Slide 2: The craft — what he builds
     eyebrow: "WHAT I BUILD",
     headline: ["Immersive", "Digital", "Experiences"],
     accentLine: null,
@@ -31,12 +34,11 @@ const SLIDES = [
     bg: "radial-gradient(ellipse 90% 70% at 55% 75%, #2d0a4e 0%, #150828 45%, #060209 100%)",
     triangleColor: "#9d00ff",
     triangleColor2: "#d580ff",
-    robotStyle: { right: "8%", bottom: "0%", height: "92%" },
-    robotTone: "purple",
+    image: ninja1,
+    glowColor: "rgba(160,60,255,0.35)",
   },
   {
     id: 2,
-    // Slide 3: The studio — founder identity
     eyebrow: "FOUNDER · ALEMIKA STUDIOS",
     headline: ["Building the", "Future of", "Reality"],
     accentLine: "Future of",
@@ -47,157 +49,10 @@ const SLIDES = [
     bg: "radial-gradient(ellipse 90% 70% at 60% 75%, #1a0a00 0%, #2a0f00 30%, #0d0500 100%)",
     triangleColor: "#ff4d00",
     triangleColor2: "#ff9940",
-    robotStyle: { right: "9%", bottom: "0%", height: "90%" },
-    robotTone: "amber",
+    image: samuraiAction,
+    glowColor: "rgba(255,120,20,0.35)",
   },
 ];
-
-// ─── SVG Robot Figure ─────────────────────────────────────────────────────────
-function RobotFigure({ tone, style }) {
-  const colors = {
-    teal: { body: "#0d1f2a", accent: "#00F5FF", glow: "rgba(0,200,220,0.25)" },
-    purple: {
-      body: "#1a0d2e",
-      accent: "#d580ff",
-      glow: "rgba(160,60,255,0.25)",
-    },
-    amber: {
-      body: "#1f0e00",
-      accent: "#ff9940",
-      glow: "rgba(255,120,20,0.25)",
-    },
-    pink: { body: "#2a0a1a", accent: "#ff2d7a", glow: "rgba(212,0,106,0.25)" },
-  };
-  const c = colors[tone] || colors.teal;
-  return (
-    <div className="absolute pointer-events-none" style={style}>
-      <svg
-        viewBox="0 0 220 420"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{
-          height: "100%",
-          width: "auto",
-          filter: `drop-shadow(0 0 40px ${c.glow}) drop-shadow(0 0 100px ${c.glow})`,
-        }}
-      >
-        <ellipse cx="110" cy="400" rx="70" ry="18" fill={c.glow} />
-        <rect x="75" y="20" width="70" height="65" rx="12" fill={c.body} />
-        <rect x="85" y="32" width="50" height="30" rx="6" fill="#050510" />
-        <rect
-          x="90"
-          y="38"
-          width="18"
-          height="12"
-          rx="3"
-          fill={c.accent}
-          opacity="0.9"
-        />
-        <rect
-          x="112"
-          y="38"
-          width="18"
-          height="12"
-          rx="3"
-          fill={c.accent}
-          opacity="0.9"
-        />
-        <rect
-          x="82"
-          y="72"
-          width="56"
-          height="6"
-          rx="3"
-          fill={c.accent}
-          opacity="0.4"
-        />
-        <rect x="100" y="84" width="20" height="16" rx="4" fill={c.body} />
-        <path d="M60 100 L160 100 L155 220 L65 220 Z" fill={c.body} />
-        <rect x="80" y="115" width="60" height="40" rx="6" fill="#050510" />
-        <circle
-          cx="110"
-          cy="135"
-          r="12"
-          fill="none"
-          stroke={c.accent}
-          strokeWidth="2"
-        />
-        <circle cx="110" cy="135" r="6" fill={c.accent} opacity="0.7" />
-        <rect
-          x="76"
-          y="165"
-          width="68"
-          height="3"
-          rx="1.5"
-          fill={c.accent}
-          opacity="0.3"
-        />
-        <rect
-          x="76"
-          y="172"
-          width="44"
-          height="3"
-          rx="1.5"
-          fill={c.accent}
-          opacity="0.2"
-        />
-        <circle cx="52" cy="108" r="14" fill={c.body} />
-        <rect x="36" y="118" width="20" height="70" rx="10" fill={c.body} />
-        <rect x="34" y="188" width="24" height="14" rx="7" fill={c.body} />
-        <rect x="36" y="200" width="8" height="30" rx="4" fill={c.body} />
-        <rect x="46" y="200" width="8" height="28" rx="4" fill={c.body} />
-        <circle cx="168" cy="108" r="14" fill={c.body} />
-        <rect x="164" y="118" width="20" height="70" rx="10" fill={c.body} />
-        <rect x="162" y="188" width="24" height="14" rx="7" fill={c.body} />
-        <rect x="164" y="200" width="8" height="30" rx="4" fill={c.body} />
-        <rect x="174" y="200" width="8" height="28" rx="4" fill={c.body} />
-        <rect x="68" y="218" width="84" height="30" rx="8" fill={c.body} />
-        <rect x="72" y="246" width="32" height="80" rx="10" fill={c.body} />
-        <rect x="72" y="320" width="32" height="20" rx="6" fill={c.body} />
-        <rect x="66" y="338" width="44" height="14" rx="7" fill={c.body} />
-        <rect x="116" y="246" width="32" height="80" rx="10" fill={c.body} />
-        <rect x="116" y="320" width="32" height="20" rx="6" fill={c.body} />
-        <rect x="110" y="338" width="44" height="14" rx="7" fill={c.body} />
-        <rect
-          x="74"
-          y="260"
-          width="28"
-          height="2"
-          rx="1"
-          fill={c.accent}
-          opacity="0.4"
-        />
-        <rect
-          x="118"
-          y="260"
-          width="28"
-          height="2"
-          rx="1"
-          fill={c.accent}
-          opacity="0.4"
-        />
-        <rect
-          x="40"
-          y="130"
-          width="16"
-          height="2"
-          rx="1"
-          fill={c.accent}
-          opacity="0.5"
-        />
-        <rect
-          x="164"
-          y="130"
-          width="16"
-          height="2"
-          rx="1"
-          fill={c.accent}
-          opacity="0.5"
-        />
-      </svg>
-    </div>
-  );
-}
 
 // ─── Triangle Shape ───────────────────────────────────────────────────────────
 function TriangleShape({ color1, color2, id }) {
@@ -363,7 +218,7 @@ export default function LandingPageSlider() {
           className="absolute z-10"
           style={{
             right: "12%",
-            top: "10%",
+            top: "clamp(80px, 14vh, 120px)",
             width: "32%",
             height: "50%",
             maxWidth: 380,
@@ -377,10 +232,10 @@ export default function LandingPageSlider() {
         </motion.div>
       </AnimatePresence>
 
-      {/* ── Robot ── */}
+      {/* ── Character image ── */}
       <AnimatePresence mode="wait" custom={dirVal}>
         <motion.div
-          key={`robot-${current}`}
+          key={`char-${current}`}
           variants={robotVariants}
           initial="enter"
           animate="center"
@@ -388,10 +243,33 @@ export default function LandingPageSlider() {
           custom={dirVal}
           className="absolute inset-0 z-20 pointer-events-none"
         >
-          <RobotFigure
-            tone={slide.robotTone}
-            style={{ ...slide.robotStyle, position: "absolute" }}
-          />
+          {/* Bottom-fade so image bleeds naturally into the background */}
+          <div
+            className="absolute"
+            style={{
+              right: "8%",
+              top: "clamp(80px, 14vh, 120px)",
+              bottom: 0,
+              width: "auto",
+              maxWidth: "45%",
+            }}
+          >
+            <img
+              src={slide.image}
+              alt="character"
+              style={{
+                height: "100%",
+                width: "auto",
+                objectFit: "contain",
+                objectPosition: "bottom",
+                display: "block",
+                filter: `drop-shadow(0 0 60px ${slide.glowColor}) drop-shadow(0 0 120px ${slide.glowColor})`,
+                maskImage: "linear-gradient(to top, transparent 0%, black 18%)",
+                WebkitMaskImage:
+                  "linear-gradient(to top, transparent 0%, black 18%)",
+              }}
+            />
+          </div>
         </motion.div>
       </AnimatePresence>
 
@@ -407,7 +285,7 @@ export default function LandingPageSlider() {
           className="absolute z-30 flex flex-col justify-center"
           style={{
             left: "clamp(24px, 6vw, 80px)",
-            top: 0,
+            top: "clamp(80px, 14vh, 120px)",
             bottom: 0,
             maxWidth: "clamp(260px, 46%, 520px)",
           }}
