@@ -2,9 +2,9 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // ─── Character image imports ──────────────────────────────────────────────────
-import samurai1 from "../assets/mayo landing image/Samurai1.png";
-import ninja1 from "../assets/mayo landing image/Ninja1.webp";
-import samuraiAction from "../assets/mayo landing image/SmauraiAction.png";
+import productdesign from "../assets/mayoLandingImage/3DProductDesign.png";
+import augmenteddesign from "../assets/mayoLandingImage/AugmentedReality.png";
+import cameraexplosion from "../assets/mayoLandingImage/CameraExplosion.png";
 
 // ─── Slide Data — Mayokun's identity spread across 3 slides ──────────────────
 const SLIDES = [
@@ -19,7 +19,7 @@ const SLIDES = [
     bg: "radial-gradient(ellipse 90% 70% at 65% 75%, #0d1a3a 0%, #050d1f 45%, #020509 100%)",
     triangleColor: "#0066ff",
     triangleColor2: "#00F5FF",
-    image: samurai1,
+    image: productdesign,
     glowColor: "rgba(0,200,220,0.35)",
   },
   {
@@ -34,7 +34,7 @@ const SLIDES = [
     bg: "radial-gradient(ellipse 90% 70% at 55% 75%, #2d0a4e 0%, #150828 45%, #060209 100%)",
     triangleColor: "#9d00ff",
     triangleColor2: "#d580ff",
-    image: ninja1,
+    image: augmenteddesign,
     glowColor: "rgba(160,60,255,0.35)",
   },
   {
@@ -49,7 +49,7 @@ const SLIDES = [
     bg: "radial-gradient(ellipse 90% 70% at 60% 75%, #1a0a00 0%, #2a0f00 30%, #0d0500 100%)",
     triangleColor: "#ff4d00",
     triangleColor2: "#ff9940",
-    image: samuraiAction,
+    image: cameraexplosion,
     glowColor: "rgba(255,120,20,0.35)",
   },
 ];
@@ -75,8 +75,10 @@ function TriangleShape({ color1, color2, id }) {
 }
 
 // ─── Animation Variants ───────────────────────────────────────────────────────
+
+// Text + triangle slide in from RIGHT, exit to left
 const textVariants = {
-  enter: (dir) => ({ x: dir * -60, opacity: 0, filter: "blur(10px)" }),
+  enter: (dir) => ({ x: dir * 80, opacity: 0, filter: "blur(10px)" }),
   center: {
     x: 0,
     opacity: 1,
@@ -84,7 +86,7 @@ const textVariants = {
     transition: { duration: 0.75, ease: [0.25, 0.46, 0.45, 0.94] },
   },
   exit: (dir) => ({
-    x: dir * 60,
+    x: dir * -80,
     opacity: 0,
     filter: "blur(6px)",
     transition: { duration: 0.45, ease: [0.55, 0, 1, 0.45] },
@@ -92,7 +94,7 @@ const textVariants = {
 };
 
 const triangleVariants = {
-  enter: (dir) => ({ x: dir * 220, opacity: 0, rotate: dir * 18, scale: 0.65 }),
+  enter: (dir) => ({ x: dir * 180, opacity: 0, rotate: dir * 18, scale: 0.65 }),
   center: {
     x: 0,
     opacity: 1,
@@ -101,7 +103,7 @@ const triangleVariants = {
     transition: { duration: 1.0, ease: [0.25, 0.46, 0.45, 0.94] },
   },
   exit: (dir) => ({
-    x: dir * -200,
+    x: dir * -180,
     opacity: 0,
     rotate: dir * -12,
     scale: 0.75,
@@ -109,8 +111,9 @@ const triangleVariants = {
   }),
 };
 
-const robotVariants = {
-  enter: (dir) => ({ x: dir * 180, opacity: 0, scale: 0.9 }),
+// Character image slides in from LEFT, exits to right — opposite of text
+const charVariants = {
+  enter: (dir) => ({ x: dir * -180, opacity: 0, scale: 0.9 }),
   center: {
     x: 0,
     opacity: 1,
@@ -118,7 +121,7 @@ const robotVariants = {
     transition: { duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.08 },
   },
   exit: (dir) => ({
-    x: dir * -160,
+    x: dir * 160,
     opacity: 0,
     scale: 0.95,
     transition: { duration: 0.55 },
@@ -217,11 +220,11 @@ export default function LandingPageSlider() {
           custom={dirVal}
           className="absolute z-10"
           style={{
-            right: "12%",
+            right: "8%",
             top: "clamp(80px, 14vh, 120px)",
-            width: "32%",
+            width: "30%",
             height: "50%",
-            maxWidth: 380,
+            maxWidth: 340,
           }}
         >
           <TriangleShape
@@ -232,26 +235,25 @@ export default function LandingPageSlider() {
         </motion.div>
       </AnimatePresence>
 
-      {/* ── Character image ── */}
+      {/* ── Character image — slides in from LEFT ── */}
       <AnimatePresence mode="wait" custom={dirVal}>
         <motion.div
           key={`char-${current}`}
-          variants={robotVariants}
+          variants={charVariants}
           initial="enter"
           animate="center"
           exit="exit"
           custom={dirVal}
           className="absolute inset-0 z-20 pointer-events-none"
         >
-          {/* Bottom-fade so image bleeds naturally into the background */}
           <div
             className="absolute"
             style={{
-              right: "8%",
+              right: "18%",
               top: "clamp(80px, 14vh, 120px)",
               bottom: 0,
               width: "auto",
-              maxWidth: "45%",
+              maxWidth: "42%",
             }}
           >
             <img
@@ -287,7 +289,7 @@ export default function LandingPageSlider() {
             left: "clamp(24px, 6vw, 80px)",
             top: "clamp(80px, 14vh, 120px)",
             bottom: 0,
-            maxWidth: "clamp(260px, 46%, 520px)",
+            maxWidth: "clamp(240px, 38%, 440px)",
           }}
         >
           {/* Eyebrow */}
