@@ -16,7 +16,6 @@ const SLIDES = [
     subtext: "Senior 3D Developer & Real-Time XR Specialist",
     cta: "SEE MY WORK",
     ctaHref: "#about",
-    // Deep teal — picks up the iridescent lens glass greens/cyans in the product image
     bg: "radial-gradient(ellipse 90% 70% at 60% 80%, #002a2e 0%, #001418 45%, #000608 100%)",
     triangleColor: "#00b4c8",
     triangleColor2: "#40ffe8",
@@ -32,7 +31,6 @@ const SLIDES = [
       "Cinematic animations · VR systems · AAA-level interactive environments built for the real-time web",
     cta: "EXPLORE WORK",
     ctaHref: "#projects",
-    // Warm coral/rose — matches the flesh, bone and warm medical AR tones
     bg: "radial-gradient(ellipse 90% 70% at 55% 75%, #2e0a0a 0%, #1a0608 45%, #080205 100%)",
     triangleColor: "#e8502a",
     triangleColor2: "#ffaa80",
@@ -48,7 +46,6 @@ const SLIDES = [
       "A creative technology studio crafting the next generation of immersive XR and real-time 3D productions",
     cta: "CONTACT ME",
     ctaHref: "#contact",
-    // Amber/gold — the orange lens mount ring and warm circuit board tones
     bg: "radial-gradient(ellipse 90% 70% at 60% 75%, #1f1000 0%, #2e1800 30%, #0d0600 100%)",
     triangleColor: "#c86000",
     triangleColor2: "#ffb830",
