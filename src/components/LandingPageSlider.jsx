@@ -16,11 +16,12 @@ const SLIDES = [
     subtext: "Senior 3D Developer & Real-Time XR Specialist",
     cta: "SEE MY WORK",
     ctaHref: "#about",
-    bg: "radial-gradient(ellipse 90% 70% at 65% 75%, #0d1a3a 0%, #050d1f 45%, #020509 100%)",
-    triangleColor: "#0066ff",
-    triangleColor2: "#00F5FF",
+    // Deep teal — picks up the iridescent lens glass greens/cyans in the product image
+    bg: "radial-gradient(ellipse 90% 70% at 60% 80%, #002a2e 0%, #001418 45%, #000608 100%)",
+    triangleColor: "#00b4c8",
+    triangleColor2: "#40ffe8",
     image: productdesign,
-    glowColor: "rgba(0,200,220,0.35)",
+    glowColor: "rgba(0,190,200,0.4)",
   },
   {
     id: 1,
@@ -31,11 +32,12 @@ const SLIDES = [
       "Cinematic animations · VR systems · AAA-level interactive environments built for the real-time web",
     cta: "EXPLORE WORK",
     ctaHref: "#projects",
-    bg: "radial-gradient(ellipse 90% 70% at 55% 75%, #2d0a4e 0%, #150828 45%, #060209 100%)",
-    triangleColor: "#9d00ff",
-    triangleColor2: "#d580ff",
+    // Warm coral/rose — matches the flesh, bone and warm medical AR tones
+    bg: "radial-gradient(ellipse 90% 70% at 55% 75%, #2e0a0a 0%, #1a0608 45%, #080205 100%)",
+    triangleColor: "#e8502a",
+    triangleColor2: "#ffaa80",
     image: augmenteddesign,
-    glowColor: "rgba(160,60,255,0.35)",
+    glowColor: "rgba(240,100,60,0.38)",
   },
   {
     id: 2,
@@ -46,11 +48,12 @@ const SLIDES = [
       "A creative technology studio crafting the next generation of immersive XR and real-time 3D productions",
     cta: "CONTACT ME",
     ctaHref: "#contact",
-    bg: "radial-gradient(ellipse 90% 70% at 60% 75%, #1a0a00 0%, #2a0f00 30%, #0d0500 100%)",
-    triangleColor: "#ff4d00",
-    triangleColor2: "#ff9940",
+    // Amber/gold — the orange lens mount ring and warm circuit board tones
+    bg: "radial-gradient(ellipse 90% 70% at 60% 75%, #1f1000 0%, #2e1800 30%, #0d0600 100%)",
+    triangleColor: "#c86000",
+    triangleColor2: "#ffb830",
     image: cameraexplosion,
-    glowColor: "rgba(255,120,20,0.35)",
+    glowColor: "rgba(210,110,0,0.42)",
   },
 ];
 
