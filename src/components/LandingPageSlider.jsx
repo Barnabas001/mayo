@@ -122,7 +122,6 @@ function TriangleShape({ color1, color2, id }) {
 }
 
 // ─── Animation Variants ───────────────────────────────────────────────────────
-// Text slides in from RIGHT, exits LEFT
 const textVariants = {
   enter: (dir) => ({ x: dir * 60, opacity: 0, filter: "blur(8px)" }),
   center: {
@@ -139,7 +138,6 @@ const textVariants = {
   }),
 };
 
-// Triangle slides in from RIGHT, exits LEFT
 const triangleVariants = {
   enter: (dir) => ({ x: dir * 160, opacity: 0, rotate: dir * 16, scale: 0.6 }),
   center: {
@@ -158,7 +156,6 @@ const triangleVariants = {
   }),
 };
 
-// Image slides in from LEFT, exits RIGHT — opposite of text/triangle
 const charVariants = {
   enter: (dir) => ({ x: dir * -160, opacity: 0, scale: 0.88 }),
   center: {
@@ -189,7 +186,7 @@ const wordVariants = {
   exit: { y: -12, opacity: 0, transition: { duration: 0.25 } },
 };
 
-// ─── Main Component ───────────────────────────────────────────────────────────
+//  Main Component
 export default function LandingPageSlider() {
   const [current, setCurrent] = useState(0);
   const [dirVal, setDirVal] = useState(1);
