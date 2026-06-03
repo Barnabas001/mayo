@@ -2,9 +2,9 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 // ─── Character image imports ──────────────────────────────────────────────────
-import productdesign from "../assets/mayoLandingImage/3DProductDesign.png";
-import augmenteddesign from "../assets/mayoLandingImage/AugmentedReality.png";
-import cameraexplosion from "../assets/mayoLandingImage/CameraExplosion.png";
+import productdesign from "../assets/mayoLandingImage/3DProductdesign.webp";
+import augmenteddesign from "../assets/mayoLandingImage/AAAGameCharacterDesign.webp";
+import cameraexplosion from "../assets/mayoLandingImage/ArchitecturalVisualizationFinal.webp";
 
 // ─── Slide Data — Mayokun's identity spread across 3 slides ──────────────────
 const SLIDES = [
