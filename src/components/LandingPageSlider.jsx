@@ -1,12 +1,14 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// ─── Character image imports ──────────────────────────────────────────────────
+// ─── Image imports ────────────────────────────────────────────────────────────
 import productdesign from "../assets/mayoLandingImage/3DProductdesign.webp";
-import augmenteddesign from "../assets/mayoLandingImage/AAAGameCharacterDesign.webp";
-import cameraexplosion from "../assets/mayoLandingImage/ArchitecturalVisualizationFinal.webp";
+import aaaCharacter from "../assets/mayoLandingImage/AAAGameCharacterDesign.webp";
+import archViz from "../assets/mayoLandingImage/ArchitecturalVisualizationFinal.webp";
+import assetPack from "../assets/mayoLandingImage/AssetPack.webp";
+import mobileGame from "../assets/mayoLandingImage/MobileGameDevelopment.webp";
 
-// ─── Slide Data — Mayokun's identity spread across 3 slides ──────────────────
+// ─── Slide Data ───────────────────────────────────────────────────────────────
 const SLIDES = [
   {
     id: 0,
@@ -24,21 +26,66 @@ const SLIDES = [
   },
   {
     id: 1,
-    eyebrow: "WHAT I BUILD",
-    headline: ["Immersive", "Digital", "Experiences"],
-    accentLine: null,
+    eyebrow: "AAA GAME CHARACTER DESIGN",
+    headline: ["Battle-Ready", "AAA Game", "Characters"],
+    accentLine: "AAA Game",
     subtext:
-      "Cinematic animations · VR systems · AAA-level interactive environments built for the real-time web",
-    cta: "EXPLORE WORK",
+      "Hyper-realistic warrior characters crafted for AAA game pipelines — every detail battle-worn and authentic",
+    cta: "VIEW WORK",
     ctaHref: "#projects",
-    bg: "radial-gradient(ellipse 90% 70% at 55% 75%, #2e0a0a 0%, #1a0608 45%, #080205 100%)",
-    triangleColor: "#e8502a",
-    triangleColor2: "#ffaa80",
-    image: augmenteddesign,
-    glowColor: "rgba(240,100,60,0.38)",
+    bg: "radial-gradient(ellipse 90% 70% at 55% 80%, #2a0008 0%, #160005 45%, #080002 100%)",
+    triangleColor: "#8b0020",
+    triangleColor2: "#ff3355",
+    image: aaaCharacter,
+    glowColor: "rgba(180,0,40,0.45)",
   },
   {
     id: 2,
+    eyebrow: "ARCHITECTURAL VISUALIZATION",
+    headline: ["Spaces That", "Feel Real", "Before Built"],
+    accentLine: "Feel Real",
+    subtext:
+      "Photorealistic architectural renders and walkthroughs that help clients visualize spaces before construction begins",
+    cta: "EXPLORE",
+    ctaHref: "#projects",
+    bg: "radial-gradient(ellipse 90% 70% at 55% 75%, #1e1400 0%, #120d00 45%, #080600 100%)",
+    triangleColor: "#c89040",
+    triangleColor2: "#ffd580",
+    image: archViz,
+    glowColor: "rgba(200,150,50,0.38)",
+  },
+  {
+    id: 3,
+    eyebrow: "GAME ASSET PRODUCTION",
+    headline: ["Complete", "Game-Ready", "Asset Packs"],
+    accentLine: "Game-Ready",
+    subtext:
+      "Full asset packs — characters, props, environments — optimised for Unity and Unreal Engine",
+    cta: "SEE PACKS",
+    ctaHref: "#projects",
+    bg: "radial-gradient(ellipse 90% 70% at 55% 75%, #001a0a 0%, #001008 45%, #000503 100%)",
+    triangleColor: "#00803a",
+    triangleColor2: "#40e888",
+    image: assetPack,
+    glowColor: "rgba(0,160,80,0.38)",
+  },
+  {
+    id: 4,
+    eyebrow: "MOBILE GAME DEVELOPMENT",
+    headline: ["Immersive", "Mobile Game", "Worlds"],
+    accentLine: "Mobile Game",
+    subtext:
+      "Isometric mobile game environments with rich detail, vibrant palettes and optimised performance",
+    cta: "DISCOVER",
+    ctaHref: "#projects",
+    bg: "radial-gradient(ellipse 90% 70% at 55% 75%, #001a1a 0%, #001010 45%, #000606 100%)",
+    triangleColor: "#007a7a",
+    triangleColor2: "#40d4cc",
+    image: mobileGame,
+    glowColor: "rgba(0,160,155,0.4)",
+  },
+  {
+    id: 5,
     eyebrow: "FOUNDER · ALEMIKA STUDIOS",
     headline: ["Building the", "Future of", "Reality"],
     accentLine: "Future of",
@@ -49,7 +96,7 @@ const SLIDES = [
     bg: "radial-gradient(ellipse 90% 70% at 60% 75%, #1f1000 0%, #2e1800 30%, #0d0600 100%)",
     triangleColor: "#c86000",
     triangleColor2: "#ffb830",
-    image: cameraexplosion,
+    image: productdesign,
     glowColor: "rgba(210,110,0,0.42)",
   },
 ];
@@ -75,26 +122,26 @@ function TriangleShape({ color1, color2, id }) {
 }
 
 // ─── Animation Variants ───────────────────────────────────────────────────────
-
-// Text + triangle slide in from RIGHT, exit to left
+// Text slides in from RIGHT, exits LEFT
 const textVariants = {
-  enter: (dir) => ({ x: dir * 80, opacity: 0, filter: "blur(10px)" }),
+  enter: (dir) => ({ x: dir * 60, opacity: 0, filter: "blur(8px)" }),
   center: {
     x: 0,
     opacity: 1,
     filter: "blur(0px)",
-    transition: { duration: 0.75, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] },
   },
   exit: (dir) => ({
-    x: dir * -80,
+    x: dir * -60,
     opacity: 0,
-    filter: "blur(6px)",
-    transition: { duration: 0.45, ease: [0.55, 0, 1, 0.45] },
+    filter: "blur(5px)",
+    transition: { duration: 0.4, ease: [0.55, 0, 1, 0.45] },
   }),
 };
 
+// Triangle slides in from RIGHT, exits LEFT
 const triangleVariants = {
-  enter: (dir) => ({ x: dir * 180, opacity: 0, rotate: dir * 18, scale: 0.65 }),
+  enter: (dir) => ({ x: dir * 160, opacity: 0, rotate: dir * 16, scale: 0.6 }),
   center: {
     x: 0,
     opacity: 1,
@@ -103,43 +150,43 @@ const triangleVariants = {
     transition: { duration: 1.0, ease: [0.25, 0.46, 0.45, 0.94] },
   },
   exit: (dir) => ({
-    x: dir * -180,
+    x: dir * -140,
     opacity: 0,
-    rotate: dir * -12,
-    scale: 0.75,
-    transition: { duration: 0.6 },
-  }),
-};
-
-// Character image slides in from LEFT, exits to right — opposite of text
-const charVariants = {
-  enter: (dir) => ({ x: dir * -180, opacity: 0, scale: 0.9 }),
-  center: {
-    x: 0,
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.08 },
-  },
-  exit: (dir) => ({
-    x: dir * 160,
-    opacity: 0,
-    scale: 0.95,
+    rotate: dir * -10,
+    scale: 0.7,
     transition: { duration: 0.55 },
   }),
 };
 
+// Image slides in from LEFT, exits RIGHT — opposite of text/triangle
+const charVariants = {
+  enter: (dir) => ({ x: dir * -160, opacity: 0, scale: 0.88 }),
+  center: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 1.0, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.06 },
+  },
+  exit: (dir) => ({
+    x: dir * 140,
+    opacity: 0,
+    scale: 0.94,
+    transition: { duration: 0.5 },
+  }),
+};
+
 const wordVariants = {
-  enter: { y: 36, opacity: 0 },
+  enter: { y: 28, opacity: 0 },
   center: (i) => ({
     y: 0,
     opacity: 1,
     transition: {
-      duration: 0.65,
-      delay: i * 0.09,
+      duration: 0.6,
+      delay: i * 0.08,
       ease: [0.25, 0.46, 0.45, 0.94],
     },
   }),
-  exit: { y: -16, opacity: 0, transition: { duration: 0.28 } },
+  exit: { y: -12, opacity: 0, transition: { duration: 0.25 } },
 };
 
 // ─── Main Component ───────────────────────────────────────────────────────────
@@ -169,26 +216,60 @@ export default function LandingPageSlider() {
   const slide = SLIDES[current];
 
   return (
-    // Fill the Hero section completely — no inner frame
     <div
       className="absolute inset-0 overflow-hidden"
       style={{ fontFamily: "'Space Mono', monospace" }}
       onMouseEnter={() => setAutoplay(false)}
       onMouseLeave={() => setAutoplay(true)}
+      onTouchStart={() => setAutoplay(false)}
     >
-      {/* Font import */}
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+        /*
+         * Mobile overrides (≤ 767px):
+         *   - .slider-text  → top half of screen
+         *   - .slider-tri   → bottom half, overlaps with image (z:10, behind)
+         *   - .slider-char  → bottom half, in front of triangle (z:20)
+         * Desktop styles come from inline style props — untouched.
+         */
+        @media (max-width: 767px) {
+          .slider-text {
+            top: 68px !important;
+            bottom: 50% !important;
+            left: 20px !important;
+            right: 48px !important;
+            max-width: 100% !important;
+            justify-content: flex-start !important;
+            padding-top: 14px;
+          }
+          .slider-tri {
+            top: 48% !important;
+            bottom: 56px !important;
+            right: 0 !important;
+            left: 8% !important;
+            width: 84% !important;
+            max-width: 100% !important;
+            height: auto !important;
+          }
+          .slider-char {
+            top: 46% !important;
+            bottom: 50px !important;
+            right: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+          }
+        }
       `}</style>
 
-      {/* ── Persistent animated background — no flash ── */}
+      {/* ── Background — persistent, no flash ── */}
       <motion.div
         className="absolute inset-0"
         animate={{ background: slide.bg }}
         transition={{ duration: 1.1, ease: [0.25, 0.46, 0.45, 0.94] }}
       />
 
-      {/* Grain overlay */}
+      {/* Grain */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -196,20 +277,20 @@ export default function LandingPageSlider() {
             "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.35'/%3E%3C/svg%3E\")",
           backgroundSize: "180px 180px",
           mixBlendMode: "overlay",
-          opacity: 0.25,
+          opacity: 0.2,
         }}
       />
 
-      {/* Vignette — edges darker so text is always legible */}
+      {/* Vignette */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, rgba(0,0,0,0.55) 100%)",
+            "radial-gradient(ellipse 85% 85% at 50% 50%, transparent 35%, rgba(0,0,0,0.6) 100%)",
         }}
       />
 
-      {/* ── Triangle ── */}
+      {/* ── Triangle — slides in from RIGHT ── */}
       <AnimatePresence mode="wait" custom={dirVal}>
         <motion.div
           key={`tri-${current}`}
@@ -218,13 +299,13 @@ export default function LandingPageSlider() {
           animate="center"
           exit="exit"
           custom={dirVal}
-          className="absolute z-10"
+          className="absolute z-10 slider-tri"
           style={{
-            right: "8%",
-            top: "clamp(80px, 14vh, 120px)",
-            width: "30%",
-            height: "50%",
-            maxWidth: 340,
+            right: "clamp(4%, 8%, 12%)",
+            top: "clamp(60px, 10vh, 120px)",
+            width: "clamp(120px, 28vw, 320px)",
+            height: "clamp(110px, 25vw, 50%)",
+            maxWidth: 320,
           }}
         >
           <TriangleShape
@@ -244,38 +325,33 @@ export default function LandingPageSlider() {
           animate="center"
           exit="exit"
           custom={dirVal}
-          className="absolute inset-0 z-20 pointer-events-none"
+          className="absolute z-20 pointer-events-none slider-char"
+          style={{
+            right: "clamp(2%, 10%, 18%)",
+            top: "clamp(55px, 9vh, 120px)",
+            bottom: 0,
+            width: "clamp(140px, 42vw, 44%)",
+          }}
         >
-          <div
-            className="absolute"
+          <img
+            src={slide.image}
+            alt="slide visual"
             style={{
-              right: "18%",
-              top: "clamp(80px, 14vh, 120px)",
-              bottom: 0,
-              width: "auto",
-              maxWidth: "42%",
+              width: "100%",
+              height: "100%",
+              objectFit: "contain",
+              objectPosition: "bottom center",
+              display: "block",
+              filter: `drop-shadow(0 0 40px ${slide.glowColor}) drop-shadow(0 0 100px ${slide.glowColor})`,
+              maskImage: "linear-gradient(to top, transparent 0%, black 15%)",
+              WebkitMaskImage:
+                "linear-gradient(to top, transparent 0%, black 15%)",
             }}
-          >
-            <img
-              src={slide.image}
-              alt="character"
-              style={{
-                height: "100%",
-                width: "auto",
-                objectFit: "contain",
-                objectPosition: "bottom",
-                display: "block",
-                filter: `drop-shadow(0 0 60px ${slide.glowColor}) drop-shadow(0 0 120px ${slide.glowColor})`,
-                maskImage: "linear-gradient(to top, transparent 0%, black 18%)",
-                WebkitMaskImage:
-                  "linear-gradient(to top, transparent 0%, black 18%)",
-              }}
-            />
-          </div>
+          />
         </motion.div>
       </AnimatePresence>
 
-      {/* ── Text content — left column ── */}
+      {/* ── Text content — slides in from RIGHT ── */}
       <AnimatePresence mode="wait" custom={dirVal}>
         <motion.div
           key={`text-${current}`}
@@ -284,38 +360,39 @@ export default function LandingPageSlider() {
           animate="center"
           exit="exit"
           custom={dirVal}
-          className="absolute z-30 flex flex-col justify-center"
+          className="absolute z-30 flex flex-col justify-center slider-text"
           style={{
-            left: "clamp(24px, 6vw, 80px)",
-            top: "clamp(80px, 14vh, 120px)",
-            bottom: 0,
-            maxWidth: "clamp(240px, 38%, 440px)",
+            left: "clamp(20px, 5vw, 80px)",
+            top: "clamp(55px, 9vh, 120px)",
+            bottom: "clamp(80px, 12vh, 120px)",
+            maxWidth: "clamp(200px, 52vw, 440px)",
           }}
         >
           {/* Eyebrow */}
           <motion.p
             custom={0}
             variants={wordVariants}
-            className="font-normal tracking-[0.28em] mb-4"
             style={{
-              fontSize: "clamp(8px, 1vw, 11px)",
+              fontSize: "clamp(7px, 1.8vw, 11px)",
               color: slide.triangleColor2,
-              letterSpacing: "0.28em",
+              letterSpacing: "0.25em",
+              marginBottom: "clamp(6px, 1.5vh, 16px)",
+              fontWeight: 400,
             }}
           >
             {slide.eyebrow}
           </motion.p>
 
-          {/* Headline — accent on the designated line */}
-          <div className="mb-5">
+          {/* Headline */}
+          <div style={{ marginBottom: "clamp(8px, 1.8vh, 20px)" }}>
             {slide.headline.map((line, i) => (
               <motion.div
                 key={`${current}-${line}`}
                 custom={i + 1}
                 variants={wordVariants}
-                className="font-bold leading-none block"
+                className="font-bold block"
                 style={{
-                  fontSize: "clamp(2rem, 5.5vw, 4rem)",
+                  fontSize: "clamp(1.5rem, 5.5vw, 3.8rem)",
                   lineHeight: 1.05,
                   color:
                     line === slide.accentLine ? slide.triangleColor2 : "white",
@@ -327,16 +404,16 @@ export default function LandingPageSlider() {
             ))}
           </div>
 
-          {/* Subtext / descriptor */}
+          {/* Subtext */}
           <motion.p
             custom={4}
             variants={wordVariants}
-            className="mb-7 font-normal leading-relaxed"
             style={{
-              fontSize: "clamp(10px, 1.2vw, 13px)",
-              color: "rgba(255,255,255,0.55)",
-              fontFamily: "'Space Mono', monospace",
-              maxWidth: "38ch",
+              fontSize: "clamp(9px, 1.4vw, 13px)",
+              color: "rgba(255,255,255,0.5)",
+              marginBottom: "clamp(10px, 2vh, 28px)",
+              maxWidth: "36ch",
+              lineHeight: 1.6,
             }}
           >
             {slide.subtext}
@@ -347,21 +424,23 @@ export default function LandingPageSlider() {
             href={slide.ctaHref}
             custom={5}
             variants={wordVariants}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border text-xs tracking-[0.18em] w-fit transition-all duration-300 no-underline"
+            className="inline-flex items-center gap-2 rounded-full border tracking-[0.15em] w-fit no-underline"
             style={{
+              padding: "clamp(6px, 1.2vh, 10px) clamp(14px, 2.5vw, 20px)",
+              fontSize: "clamp(8px, 1.3vw, 11px)",
               borderColor: `${slide.triangleColor}70`,
               color: "white",
-              background: `${slide.triangleColor}20`,
+              background: `${slide.triangleColor}22`,
               fontFamily: "'Space Mono', monospace",
             }}
             whileHover={{
-              background: `${slide.triangleColor}45`,
+              background: `${slide.triangleColor}44`,
               borderColor: slide.triangleColor2,
               scale: 1.04,
             }}
-            whileTap={{ scale: 0.97 }}
+            whileTap={{ scale: 0.96 }}
           >
-            <span style={{ color: slide.triangleColor2, fontSize: "0.6rem" }}>
+            <span style={{ color: slide.triangleColor2, fontSize: "0.55rem" }}>
               ▶
             </span>
             {slide.cta}
@@ -373,29 +452,47 @@ export default function LandingPageSlider() {
       <div
         className="absolute z-40 flex flex-col items-center gap-1"
         style={{
-          right: "clamp(16px, 3vw, 32px)",
+          right: "clamp(10px, 2vw, 28px)",
           top: "50%",
           transform: "translateY(-50%)",
         }}
       >
         <button
           onClick={() => paginate(-1)}
-          className="text-white/35 hover:text-white/80 tracking-widest transition-colors duration-200 pb-1"
-          style={{ fontSize: 9, fontFamily: "'Space Mono', monospace" }}
+          style={{
+            fontSize: 8,
+            fontFamily: "'Space Mono', monospace",
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            color: "rgba(255,255,255,0.35)",
+            letterSpacing: "0.15em",
+            paddingBottom: 4,
+          }}
         >
           PREV
         </button>
-        <div className="w-px h-5 bg-white/20" />
+        <div
+          style={{ width: 1, height: 16, background: "rgba(255,255,255,0.2)" }}
+        />
         <button
           onClick={() => paginate(1)}
-          className="text-white/80 hover:text-white tracking-widest transition-colors duration-200 pt-1"
-          style={{ fontSize: 9, fontFamily: "'Space Mono', monospace" }}
+          style={{
+            fontSize: 8,
+            fontFamily: "'Space Mono', monospace",
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            color: "rgba(255,255,255,0.8)",
+            letterSpacing: "0.15em",
+            paddingTop: 4,
+          }}
         >
           NEXT
         </button>
 
-        {/* Slide dots */}
-        <div className="mt-3 flex flex-col gap-1.5 items-center">
+        {/* Dots */}
+        <div className="mt-2 flex flex-col gap-1.5 items-center">
           {SLIDES.map((_, i) => (
             <motion.button
               key={i}
@@ -408,13 +505,13 @@ export default function LandingPageSlider() {
                 }
               }}
               animate={{
-                opacity: i === current ? 1 : 0.22,
-                scale: i === current ? 1.4 : 1,
+                opacity: i === current ? 1 : 0.2,
+                scale: i === current ? 1.5 : 1,
               }}
-              className="rounded-full block"
               style={{
                 width: 4,
                 height: 4,
+                borderRadius: "50%",
                 background: i === current ? slide.triangleColor2 : "white",
                 border: "none",
                 padding: 0,
@@ -425,33 +522,36 @@ export default function LandingPageSlider() {
         </div>
       </div>
 
-      {/* ── Slide counter — bottom left ── */}
+      {/* ── Slide counter + progress bar ── */}
       <div
         className="absolute z-40 flex items-center gap-2"
         style={{
-          left: "clamp(24px, 6vw, 80px)",
-          bottom: "clamp(90px, 14vh, 120px)",
+          left: "clamp(20px, 5vw, 80px)",
+          bottom: "clamp(70px, 10vh, 110px)",
           fontFamily: "'Space Mono', monospace",
-          fontSize: 10,
+          fontSize: 9,
           color: "rgba(255,255,255,0.25)",
           letterSpacing: "0.2em",
         }}
       >
         <motion.span
           key={current}
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
-          style={{ color: slide.triangleColor2, fontSize: 13 }}
+          style={{ color: slide.triangleColor2, fontSize: 12 }}
         >
-          0{current + 1}
+          {String(current + 1).padStart(2, "0")}
         </motion.span>
         <span>/</span>
-        <span>0{SLIDES.length}</span>
+        <span>{String(SLIDES.length).padStart(2, "0")}</span>
 
-        {/* Progress bar */}
         <div
           className="ml-2 relative rounded-full overflow-hidden"
-          style={{ width: 60, height: 2, background: "rgba(255,255,255,0.12)" }}
+          style={{
+            width: "clamp(40px, 6vw, 60px)",
+            height: 2,
+            background: "rgba(255,255,255,0.12)",
+          }}
         >
           <motion.div
             key={`bar-${current}`}
