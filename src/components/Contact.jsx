@@ -49,29 +49,26 @@ const GALLERY = [
 ];
 
 const imgVariants = {
-  enter: (dir) => ({
-    x: dir * 60,
+  enter: {
     opacity: 0,
-    scale: 0.96,
-    filter: "blur(6px)",
-  }),
+    scale: 1,
+    filter: "blur(2px)",
+  },
   center: {
-    x: 0,
     opacity: 1,
     scale: 1,
     filter: "blur(0px)",
-    transition: { duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] },
+    transition: { duration: 1.4, ease: "easeInOut" },
   },
-  exit: (dir) => ({
-    x: dir * -60,
+  exit: {
     opacity: 0,
-    scale: 0.97,
-    filter: "blur(4px)",
-    transition: { duration: 0.4, ease: [0.55, 0, 1, 0.45] },
-  }),
+    scale: 1,
+    filter: "blur(2px)",
+    transition: { duration: 1.1, ease: "easeInOut" },
+  },
 };
 
-// ─── Image Slider ─────────────────────────────────────────────────────────────
+// Image Slider
 function ContactImageSlider() {
   const [idx, setIdx] = useState(0);
   const [dir, setDir] = useState(1);
@@ -100,7 +97,7 @@ function ContactImageSlider() {
       onMouseEnter={() => setAuto(false)}
       onMouseLeave={() => setAuto(true)}
     >
-      {/* Animated glow backdrop — moved to center to surround face */}
+      {/* Animated glow backdrop */}
       <motion.div
         className="absolute inset-0 pointer-events-none"
         animate={{
@@ -110,7 +107,7 @@ function ContactImageSlider() {
       />
 
       {/* Character image */}
-      <AnimatePresence mode="wait" custom={dir}>
+      <AnimatePresence mode="wait">
         <motion.img
           key={idx}
           src={item.src}
@@ -119,7 +116,6 @@ function ContactImageSlider() {
           initial="enter"
           animate="center"
           exit="exit"
-          custom={dir}
           className="absolute inset-0 z-10"
           style={{
             width: "100%",
@@ -223,7 +219,7 @@ function ContactImageSlider() {
           initial={{ opacity: 0, y: 6 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -4 }}
-          transition={{ duration: 0.4 }}
+          transition={{ duration: 0.9 }}
           className="absolute bottom-10 left-4 z-20"
           style={{
             fontFamily: "'Space Mono', monospace",
