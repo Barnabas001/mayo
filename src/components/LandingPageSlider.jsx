@@ -186,7 +186,7 @@ const wordVariants = {
   exit: { y: -12, opacity: 0, transition: { duration: 0.25 } },
 };
 
-//  Main Component
+// ─── Main Component ───────────────────────────────────────────────────────────
 export default function LandingPageSlider() {
   const [current, setCurrent] = useState(0);
   const [dirVal, setDirVal] = useState(1);
@@ -223,13 +223,6 @@ export default function LandingPageSlider() {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
-        /*
-         * Mobile overrides (≤ 767px):
-         *   - .slider-text  → top half of screen
-         *   - .slider-tri   → bottom half, overlaps with image (z:10, behind)
-         *   - .slider-char  → bottom half, in front of triangle (z:20)
-         * Desktop styles come from inline style props — untouched.
-         */
         @media (max-width: 767px) {
           .slider-text {
             top: 68px !important;
@@ -259,7 +252,7 @@ export default function LandingPageSlider() {
         }
       `}</style>
 
-      {/* ── Background — persistent, no flash ── */}
+      {/* ── Background ── */}
       <motion.div
         className="absolute inset-0"
         animate={{ background: slide.bg }}
@@ -287,7 +280,7 @@ export default function LandingPageSlider() {
         }}
       />
 
-      {/* ── Triangle — slides in from RIGHT ── */}
+      {/* ── Triangle — slides from RIGHT, positioned center-right ── */}
       <AnimatePresence mode="wait" custom={dirVal}>
         <motion.div
           key={`tri-${current}`}
@@ -298,11 +291,11 @@ export default function LandingPageSlider() {
           custom={dirVal}
           className="absolute z-10 slider-tri"
           style={{
-            right: "clamp(4%, 8%, 12%)",
-            top: "clamp(60px, 10vh, 120px)",
-            width: "clamp(120px, 28vw, 320px)",
-            height: "clamp(110px, 25vw, 50%)",
-            maxWidth: 320,
+            /* Starts at 38% from left so it sits right behind where image meets text */
+            right: "2%",
+            top: "clamp(55px, 8vh, 110px)",
+            width: "clamp(160px, 38vw, 520px)",
+            height: "clamp(140px, 55vh, 600px)",
           }}
         >
           <TriangleShape
@@ -313,7 +306,7 @@ export default function LandingPageSlider() {
         </motion.div>
       </AnimatePresence>
 
-      {/* ── Character image — slides in from LEFT ── */}
+      {/* ── Character image — slides from LEFT, bleeds into center ── */}
       <AnimatePresence mode="wait" custom={dirVal}>
         <motion.div
           key={`char-${current}`}
@@ -324,10 +317,11 @@ export default function LandingPageSlider() {
           custom={dirVal}
           className="absolute z-20 pointer-events-none slider-char"
           style={{
-            right: "clamp(2%, 10%, 18%)",
-            top: "clamp(55px, 9vh, 120px)",
+            /* Wide enough to bleed into center, meeting the text */
+            right: "2%",
+            left: "35%",
+            top: "clamp(55px, 6vh, 100px)",
             bottom: 0,
-            width: "clamp(140px, 42vw, 44%)",
           }}
         >
           <img
@@ -348,7 +342,7 @@ export default function LandingPageSlider() {
         </motion.div>
       </AnimatePresence>
 
-      {/* ── Text content — slides in from RIGHT ── */}
+      {/* ── Text — slides from RIGHT, left column ── */}
       <AnimatePresence mode="wait" custom={dirVal}>
         <motion.div
           key={`text-${current}`}
@@ -359,10 +353,11 @@ export default function LandingPageSlider() {
           custom={dirVal}
           className="absolute z-30 flex flex-col justify-center slider-text"
           style={{
-            left: "clamp(20px, 5vw, 80px)",
+            /* Text occupies left 42% — image left edge starts at 35% so they overlap slightly */
+            left: "clamp(20px, 5vw, 72px)",
             top: "clamp(55px, 9vh, 120px)",
             bottom: "clamp(80px, 12vh, 120px)",
-            maxWidth: "clamp(200px, 52vw, 440px)",
+            maxWidth: "clamp(200px, 42vw, 480px)",
           }}
         >
           {/* Eyebrow */}
@@ -488,7 +483,6 @@ export default function LandingPageSlider() {
           NEXT
         </button>
 
-        {/* Dots */}
         <div className="mt-2 flex flex-col gap-1.5 items-center">
           {SLIDES.map((_, i) => (
             <motion.button
@@ -523,7 +517,7 @@ export default function LandingPageSlider() {
       <div
         className="absolute z-40 flex items-center gap-2"
         style={{
-          left: "clamp(20px, 5vw, 80px)",
+          left: "clamp(20px, 5vw, 72px)",
           bottom: "clamp(70px, 10vh, 110px)",
           fontFamily: "'Space Mono', monospace",
           fontSize: 9,
