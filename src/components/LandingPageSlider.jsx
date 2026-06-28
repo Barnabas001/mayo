@@ -319,8 +319,8 @@ export default function LandingPageSlider() {
           style={{
             /* Wide enough to bleed into center, meeting the text */
             right: "2%",
-            left: "35%",
-            top: "clamp(55px, 6vh, 100px)",
+            left: "18%",
+            top: "clamp(40px, 4vh, 80px)",
             bottom: 0,
           }}
         >
@@ -351,20 +351,22 @@ export default function LandingPageSlider() {
           animate="center"
           exit="exit"
           custom={dirVal}
-          className="absolute z-30 flex flex-col justify-center slider-text"
+          className="absolute flex flex-col justify-center slider-text"
           style={{
-            /* Text occupies left 42% — image left edge starts at 35% so they overlap slightly */
             left: "clamp(20px, 5vw, 72px)",
             top: "clamp(55px, 9vh, 120px)",
             bottom: "clamp(80px, 12vh, 120px)",
-            maxWidth: "clamp(200px, 42vw, 480px)",
+            maxWidth: "clamp(260px, 52vw, 620px)",
+            zIndex: 30,
           }}
         >
-          {/* Eyebrow */}
+          {/* Eyebrow — in front of image */}
           <motion.p
             custom={0}
             variants={wordVariants}
             style={{
+              position: "relative",
+              zIndex: 30,
               fontSize: "clamp(7px, 1.8vw, 11px)",
               color: slide.triangleColor2,
               letterSpacing: "0.25em",
@@ -375,8 +377,14 @@ export default function LandingPageSlider() {
             {slide.eyebrow}
           </motion.p>
 
-          {/* Headline */}
-          <div style={{ marginBottom: "clamp(8px, 1.8vh, 20px)" }}>
+          {/* Headline — large, always in front of image */}
+          <div
+            style={{
+              position: "relative",
+              zIndex: 30,
+              marginBottom: "clamp(8px, 1.8vh, 20px)",
+            }}
+          >
             {slide.headline.map((line, i) => (
               <motion.div
                 key={`${current}-${line}`}
@@ -384,11 +392,17 @@ export default function LandingPageSlider() {
                 variants={wordVariants}
                 className="font-bold block"
                 style={{
-                  fontSize: "clamp(1.5rem, 5.5vw, 3.8rem)",
-                  lineHeight: 1.05,
+                  fontSize: "clamp(2.8rem, 8vw, 6.5rem)",
+                  lineHeight: 1.0,
                   color:
-                    line === slide.accentLine ? slide.triangleColor2 : "white",
+                    line === slide.accentLine
+                      ? slide.triangleColor2
+                      : "rgba(255,255,255,0.92)",
                   fontFamily: "'Space Mono', monospace",
+                  textShadow:
+                    line === slide.accentLine
+                      ? `0 0 40px ${slide.triangleColor2}88, 0 0 80px ${slide.triangleColor}44`
+                      : "0 2px 20px rgba(0,0,0,0.8)",
                 }}
               >
                 {line}
@@ -396,11 +410,13 @@ export default function LandingPageSlider() {
             ))}
           </div>
 
-          {/* Subtext */}
+          {/* Subtext — in front of image */}
           <motion.p
             custom={4}
             variants={wordVariants}
             style={{
+              position: "relative",
+              zIndex: 30,
               fontSize: "clamp(9px, 1.4vw, 13px)",
               color: "rgba(255,255,255,0.5)",
               marginBottom: "clamp(10px, 2vh, 28px)",
@@ -411,13 +427,15 @@ export default function LandingPageSlider() {
             {slide.subtext}
           </motion.p>
 
-          {/* CTA */}
+          {/* CTA — in front of image */}
           <motion.a
             href={slide.ctaHref}
             custom={5}
             variants={wordVariants}
             className="inline-flex items-center gap-2 rounded-full border tracking-[0.15em] w-fit no-underline"
             style={{
+              position: "relative",
+              zIndex: 30,
               padding: "clamp(6px, 1.2vh, 10px) clamp(14px, 2.5vw, 20px)",
               fontSize: "clamp(8px, 1.3vw, 11px)",
               borderColor: `${slide.triangleColor}70`,

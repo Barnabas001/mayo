@@ -236,7 +236,7 @@ function ContactImageSlider() {
   );
 }
 
-// ─── Contact Component ────────────────────────────────────────────────────────
+// Contact Component
 const Contact = () => {
   const formRef = useRef();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -334,7 +334,7 @@ const Contact = () => {
         </form>
       </motion.div>
 
-      {/* ── Right: Image Slider (replaces EarthCanvas) ── */}
+      {/* Right: Image Slider (replaces EarthCanvas) */}
       <motion.div
         variants={slideIn("right", "tween", 0.2, 1)}
         className="xl:flex-1 xl:h-auto md:h-[440px] h-[260px]"
