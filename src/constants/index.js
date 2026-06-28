@@ -53,7 +53,7 @@ const services = [
     ],
   },
   {
-    title: "VR & AR",
+    title: "Extended Reality (VR, AR and MR)",
     icon: mobile,
     color: "#1a0533",
     accent: "#7b2ff7",
