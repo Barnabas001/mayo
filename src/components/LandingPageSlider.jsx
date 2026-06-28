@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// ─── Image imports ────────────────────────────────────────────────────────────
+//  Image imports 
 import productdesign from "../assets/mayoLandingImage/3DProductdesign.webp";
 import aaaCharacter from "../assets/mayoLandingImage/AAAGameCharacterDesign.webp";
 import archViz from "../assets/mayoLandingImage/ArchitecturalVisualizationFinal.webp";
@@ -9,7 +9,7 @@ import assetPack from "../assets/mayoLandingImage/AssetPack.webp";
 import mobileGame from "../assets/mayoLandingImage/MobileGameDevelopment.webp";
 import augmentedReality from "../assets/mayoLandingImage/AugmentedReality.webp";
 
-// ─── Slide Data ───────────────────────────────────────────────────────────────
+// Slide Data 
 const SLIDES = [
   {
     id: 0,
@@ -117,7 +117,7 @@ const SLIDES = [
   },
 ];
 
-// ─── Triangle Shape ───────────────────────────────────────────────────────────
+// Triangle Shape 
 function TriangleShape({ color1, color2, id }) {
   return (
     <svg
@@ -137,7 +137,7 @@ function TriangleShape({ color1, color2, id }) {
   );
 }
 
-// ─── Animation Variants ───────────────────────────────────────────────────────
+//  Animation Variants 
 const textVariants = {
   enter: (dir) => ({ x: dir * 60, opacity: 0, filter: "blur(8px)" }),
   center: {
@@ -202,7 +202,7 @@ const wordVariants = {
   exit: { y: -12, opacity: 0, transition: { duration: 0.25 } },
 };
 
-// ─── Main Component ───────────────────────────────────────────────────────────
+//  Main Component 
 export default function LandingPageSlider() {
   const [current, setCurrent] = useState(0);
   const [dirVal, setDirVal] = useState(1);
@@ -268,7 +268,7 @@ export default function LandingPageSlider() {
         }
       `}</style>
 
-      {/* ── Background ── */}
+      {/* Background */}
       <motion.div
         className="absolute inset-0"
         animate={{ background: slide.bg }}
@@ -296,7 +296,7 @@ export default function LandingPageSlider() {
         }}
       />
 
-      {/* ── Triangle — slides from RIGHT, positioned center-right ── */}
+      {/* Triangle — slides from RIGHT, positioned center-right */}
       <AnimatePresence mode="wait" custom={dirVal}>
         <motion.div
           key={`tri-${current}`}
@@ -322,7 +322,7 @@ export default function LandingPageSlider() {
         </motion.div>
       </AnimatePresence>
 
-      {/* ── Character image — slides from LEFT, bleeds into center ── */}
+      {/* Character image — slides from LEFT, bleeds into center */}
       <AnimatePresence mode="wait" custom={dirVal}>
         <motion.div
           key={`char-${current}`}
@@ -363,7 +363,7 @@ export default function LandingPageSlider() {
         </motion.div>
       </AnimatePresence>
 
-      {/* ── Text — slides from RIGHT, left column ── */}
+      {/* Text  slides from RIGHT, left column */}
       <AnimatePresence mode="wait" custom={dirVal}>
         <motion.div
           key={`text-${current}`}
@@ -398,7 +398,7 @@ export default function LandingPageSlider() {
             {slide.eyebrow}
           </motion.p>
 
-          {/* Headline — large, always in front of image */}
+          {/* Headline  large, always in front of image */}
           <div
             style={{
               position: "relative",
@@ -431,7 +431,7 @@ export default function LandingPageSlider() {
             ))}
           </div>
 
-          {/* Subtext — in front of image */}
+          {/* Subtext in front of image */}
           <motion.p
             custom={4}
             variants={wordVariants}
@@ -448,7 +448,7 @@ export default function LandingPageSlider() {
             {slide.subtext}
           </motion.p>
 
-          {/* CTA — in front of image */}
+          {/* CTA in front of image */}
           <motion.a
             href={slide.ctaHref}
             custom={5}
@@ -479,7 +479,7 @@ export default function LandingPageSlider() {
         </motion.div>
       </AnimatePresence>
 
-      {/* ── PREV / NEXT arrow navigator ── */}
+      {/*  PREV / NEXT arrow navigator  */}
       <button
         onClick={() => paginate(-1)}
         className="absolute z-40 text-white/40 hover:text-white transition-colors duration-200"
@@ -511,7 +511,7 @@ export default function LandingPageSlider() {
         ›
       </button>
 
-      {/* ── Bottom-center dot indicators ── */}
+      {/* Bottom-center dot indicators */}
       <div
         className="absolute z-40 flex gap-1.5"
         style={{
@@ -548,7 +548,7 @@ export default function LandingPageSlider() {
         ))}
       </div>
 
-      {/* ── Slide counter + progress bar ── */}
+      {/*  Slide counter + progress bar */}
       <div
         className="absolute z-40 flex items-center gap-2"
         style={{
