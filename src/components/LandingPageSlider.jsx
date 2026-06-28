@@ -334,9 +334,12 @@ export default function LandingPageSlider() {
               objectPosition: "bottom center",
               display: "block",
               filter: `drop-shadow(0 0 40px ${slide.glowColor}) drop-shadow(0 0 100px ${slide.glowColor})`,
-              maskImage: "linear-gradient(to top, transparent 0%, black 15%)",
+              maskImage:
+                "linear-gradient(to top, transparent 0%, black 15%), linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)",
               WebkitMaskImage:
-                "linear-gradient(to top, transparent 0%, black 15%)",
+                "linear-gradient(to top, transparent 0%, black 15%), linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)",
+              maskComposite: "intersect",
+              WebkitMaskComposite: "source-in",
             }}
           />
         </motion.div>

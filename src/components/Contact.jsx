@@ -124,9 +124,11 @@ function ContactImageSlider() {
             objectPosition: "center 20%",
             filter: `drop-shadow(0 0 40px ${item.glow}) drop-shadow(0 0 80px ${item.glow})`,
             maskImage:
-              "linear-gradient(to bottom, transparent 0%, black 8%, black 85%, transparent 100%)",
+              "linear-gradient(to bottom, transparent 0%, black 8%, black 85%, transparent 100%), linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
             WebkitMaskImage:
-              "linear-gradient(to bottom, transparent 0%, black 8%, black 85%, transparent 100%)",
+              "linear-gradient(to bottom, transparent 0%, black 8%, black 85%, transparent 100%), linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+            maskComposite: "intersect",
+            WebkitMaskComposite: "source-in",
           }}
         />
       </AnimatePresence>
