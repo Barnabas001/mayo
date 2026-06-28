@@ -107,7 +107,7 @@ function ContactImageSlider() {
       />
 
       {/* Character image */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         <motion.img
           key={idx}
           src={item.src}
