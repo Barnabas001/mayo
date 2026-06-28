@@ -35,12 +35,12 @@ const navLinks = [
 
 const services = [
   {
-    title: "Unreal Engine 5 Development",
+    title: "Game development",
     icon: web,
     color: "#0d1b2a",
     accent: "#1b6ca8",
     description:
-      "I architect high-fidelity real-time environments using Unreal Engine 5's full toolset — Lumen global illumination, Nanite virtualized geometry, and Blueprint/C++ systems. From AAA game worlds to interactive product demos, I build scenes that run at cinematic quality in real time.",
+      "I create high-performance, visually stunning games and interactive experiences using Unreal Engine 5. From AAA-quality environments to complex gameplay systems, I bring ideas to life with cutting-edge technology and immersive storytelling.",
     highlights: [
       "Lumen & Nanite",
       "Blueprint Scripting",
@@ -53,7 +53,7 @@ const services = [
     ],
   },
   {
-    title: "VR & AR Systems",
+    title: "VR & AR",
     icon: mobile,
     color: "#1a0533",
     accent: "#7b2ff7",
@@ -71,12 +71,12 @@ const services = [
     ],
   },
   {
-    title: "Cinematic 3D Animation",
+    title: "Cartoon Animation",
     icon: creator,
     color: "#1c0a00",
     accent: "#c44b00",
     description:
-      "I produce high-end cinematic animations using Blender, Unreal Engine Sequencer, and industry-standard pipelines. From character animation and motion capture cleanup to full-length brand films and product reveal sequences, every frame is crafted with storytelling precision and visual impact.",
+      "I produce high-quality 3D animations for commercials, brand films, and cinematic storytelling. From character rigging to motion capture cleanup, I bring characters and worlds to life with expressive animation and compelling visual narratives.",
     highlights: [
       "Blender Animation",
       "UE5 Sequencer",
@@ -89,12 +89,12 @@ const services = [
     ],
   },
   {
-    title: "Real-Time Asset Optimization",
+    title: "Asset design and optimization",
     icon: backend,
     color: "#0a1f0a",
     accent: "#1e8a3c",
     description:
-      "I specialize in building and optimizing 3D assets for real-time performance without sacrificing visual fidelity. LOD pipelines, texture atlasing, draw call reduction, and shader optimization are core to how I deliver assets that look stunning while hitting frame-rate targets on any platform.",
+      "I specialize in creating and optimizing 3D assets for real-time applications, ensuring they are visually appealing while maintaining performance. From low-poly modeling to texture baking and shader optimization, I streamline the asset pipeline for games, VR/AR, and interactive experiences.",
     highlights: [
       "LOD Pipelines",
       "PBR Texturing",
