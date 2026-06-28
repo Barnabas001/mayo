@@ -333,6 +333,8 @@ export default function LandingPageSlider() {
               objectFit: "contain",
               objectPosition: "bottom center",
               display: "block",
+              transform: "scale(0.9)",
+              transformOrigin: "bottom center",
               filter: `drop-shadow(0 0 40px ${slide.glowColor}) drop-shadow(0 0 100px ${slide.glowColor})`,
               maskImage:
                 "linear-gradient(to top, transparent 0%, black 15%), linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)",
