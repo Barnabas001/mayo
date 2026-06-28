@@ -461,77 +461,73 @@ export default function LandingPageSlider() {
         </motion.div>
       </AnimatePresence>
 
-      {/* ── PREV / NEXT navigator ── */}
-      <div
-        className="absolute z-40 flex flex-col items-center gap-1"
+      {/* ── PREV / NEXT arrow navigator ── */}
+      <button
+        onClick={() => paginate(-1)}
+        className="absolute z-40 text-white/40 hover:text-white transition-colors duration-200"
         style={{
-          right: "clamp(10px, 2vw, 28px)",
+          left: "clamp(8px, 1.5vw, 20px)",
           top: "50%",
           transform: "translateY(-50%)",
+          fontSize: 22,
+          background: "none",
+          border: "none",
+          cursor: "pointer",
         }}
       >
-        <button
-          onClick={() => paginate(-1)}
-          style={{
-            fontSize: 8,
-            fontFamily: "'Space Mono', monospace",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            color: "rgba(255,255,255,0.35)",
-            letterSpacing: "0.15em",
-            paddingBottom: 4,
-          }}
-        >
-          PREV
-        </button>
-        <div
-          style={{ width: 1, height: 16, background: "rgba(255,255,255,0.2)" }}
-        />
-        <button
-          onClick={() => paginate(1)}
-          style={{
-            fontSize: 8,
-            fontFamily: "'Space Mono', monospace",
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            color: "rgba(255,255,255,0.8)",
-            letterSpacing: "0.15em",
-            paddingTop: 4,
-          }}
-        >
-          NEXT
-        </button>
+        ‹
+      </button>
+      <button
+        onClick={() => paginate(1)}
+        className="absolute z-40 text-white/40 hover:text-white transition-colors duration-200"
+        style={{
+          right: "clamp(8px, 1.5vw, 20px)",
+          top: "50%",
+          transform: "translateY(-50%)",
+          fontSize: 22,
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+        }}
+      >
+        ›
+      </button>
 
-        <div className="mt-2 flex flex-col gap-1.5 items-center">
-          {SLIDES.map((_, i) => (
-            <motion.button
-              key={i}
-              onClick={() => {
-                if (!isAnimating) {
-                  setDirVal(i > current ? 1 : -1);
-                  setAnimating(true);
-                  setCurrent(i);
-                  setTimeout(() => setAnimating(false), 1100);
-                }
-              }}
-              animate={{
-                opacity: i === current ? 1 : 0.2,
-                scale: i === current ? 1.5 : 1,
-              }}
-              style={{
-                width: 4,
-                height: 4,
-                borderRadius: "50%",
-                background: i === current ? slide.triangleColor2 : "white",
-                border: "none",
-                padding: 0,
-                cursor: "pointer",
-              }}
-            />
-          ))}
-        </div>
+      {/* ── Bottom-center dot indicators ── */}
+      <div
+        className="absolute z-40 flex gap-1.5"
+        style={{
+          left: "50%",
+          bottom: "clamp(14px, 3vh, 28px)",
+          transform: "translateX(-50%)",
+        }}
+      >
+        {SLIDES.map((_, i) => (
+          <motion.button
+            key={i}
+            onClick={() => {
+              if (!isAnimating) {
+                setDirVal(i > current ? 1 : -1);
+                setAnimating(true);
+                setCurrent(i);
+                setTimeout(() => setAnimating(false), 1100);
+              }
+            }}
+            animate={{
+              opacity: i === current ? 1 : 0.25,
+              scale: i === current ? 1.4 : 1,
+            }}
+            className="rounded-full"
+            style={{
+              width: 5,
+              height: 5,
+              background: i === current ? slide.triangleColor2 : "white",
+              border: "none",
+              padding: 0,
+              cursor: "pointer",
+            }}
+          />
+        ))}
       </div>
 
       {/* ── Slide counter + progress bar ── */}
