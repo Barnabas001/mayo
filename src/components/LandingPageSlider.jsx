@@ -320,7 +320,7 @@ export default function LandingPageSlider() {
             /* Wide enough to bleed into center, meeting the text */
             right: "2%",
             left: "18%",
-            top: "clamp(40px, 4vh, 80px)",
+            top: 0,
             bottom: 0,
           }}
         >
@@ -337,9 +337,9 @@ export default function LandingPageSlider() {
               transformOrigin: "bottom center",
               filter: `drop-shadow(0 0 40px ${slide.glowColor}) drop-shadow(0 0 100px ${slide.glowColor})`,
               maskImage:
-                "linear-gradient(to top, transparent 0%, black 15%), linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)",
+                "linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%), linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)",
               WebkitMaskImage:
-                "linear-gradient(to top, transparent 0%, black 15%), linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)",
+                "linear-gradient(to bottom, transparent 0%, black 12%, black 88%, transparent 100%), linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)",
               maskComposite: "intersect",
               WebkitMaskComposite: "source-in",
             }}
