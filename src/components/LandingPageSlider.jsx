@@ -7,6 +7,7 @@ import aaaCharacter from "../assets/mayoLandingImage/AAAGameCharacterDesign.webp
 import archViz from "../assets/mayoLandingImage/ArchitecturalVisualizationFinal.webp";
 import assetPack from "../assets/mayoLandingImage/AssetPack.webp";
 import mobileGame from "../assets/mayoLandingImage/MobileGameDevelopment.webp";
+import augmentedReality from "../assets/mayoLandingImage/AugmentedReality.webp";
 
 // ─── Slide Data ───────────────────────────────────────────────────────────────
 const SLIDES = [
@@ -86,6 +87,21 @@ const SLIDES = [
   },
   {
     id: 5,
+    eyebrow: "AUGMENTED REALITY EXPERIENCES",
+    headline: ["Blending", "Digital &", "Physical"],
+    accentLine: "Digital &",
+    subtext:
+      "Cutting-edge AR experiences that merge the digital and physical worlds — interactive, immersive, and unforgettable",
+    cta: "EXPLORE AR",
+    ctaHref: "#projects",
+    bg: "radial-gradient(ellipse 90% 70% at 55% 75%, #0a001a 0%, #060010 45%, #020005 100%)",
+    triangleColor: "#7b2fff",
+    triangleColor2: "#c77dff",
+    image: augmentedReality,
+    glowColor: "rgba(120,40,255,0.42)",
+  },
+  {
+    id: 6,
     eyebrow: "FOUNDER · ALEMIKA STUDIOS",
     headline: ["Building the", "Future of", "Reality"],
     accentLine: "Future of",
