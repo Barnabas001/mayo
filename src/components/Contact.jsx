@@ -48,34 +48,16 @@ const GALLERY = [
   },
 ];
 
-const imgVariants = {
-  enter: {
-    opacity: 0,
-    scale: 1,
-    filter: "blur(2px)",
-  },
-  center: {
-    opacity: 1,
-    scale: 1,
-    filter: "blur(0px)",
-    transition: { duration: 1.4, ease: "easeInOut" },
-  },
-  exit: {
-    opacity: 0,
-    scale: 1,
-    filter: "blur(2px)",
-    transition: { duration: 1.1, ease: "easeInOut" },
-  },
-};
-
 // Image Slider
 function ContactImageSlider() {
   const [idx, setIdx] = useState(0);
+  const [prevIdx, setPrevIdx] = useState(0);
   const [dir, setDir] = useState(1);
   const [auto, setAuto] = useState(true);
 
   const go = (newDir) => {
     setDir(newDir);
+    setPrevIdx(idx);
     setIdx((p) => (p + newDir + GALLERY.length) % GALLERY.length);
   };
 
@@ -86,6 +68,17 @@ function ContactImageSlider() {
   }, [auto, idx]);
 
   const item = GALLERY[idx];
+  const prevItem = GALLERY[prevIdx];
+
+  // Shared mask styling for both image layers, so the soft edges match
+  const maskStyle = {
+    maskImage:
+      "linear-gradient(to bottom, transparent 0%, black 8%, black 85%, transparent 100%), linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+    WebkitMaskImage:
+      "linear-gradient(to bottom, transparent 0%, black 8%, black 85%, transparent 100%), linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+    maskComposite: "intersect",
+    WebkitMaskComposite: "source-in",
+  };
 
   return (
     <div
@@ -107,31 +100,45 @@ function ContactImageSlider() {
       />
 
       {/* Character image */}
-      <AnimatePresence>
-        <motion.img
-          key={idx}
-          src={item.src}
-          alt="gallery"
-          variants={imgVariants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          className="absolute inset-0 z-10"
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "center 20%",
-            filter: `drop-shadow(0 0 40px ${item.glow}) drop-shadow(0 0 80px ${item.glow})`,
-            maskImage:
-              "linear-gradient(to bottom, transparent 0%, black 8%, black 85%, transparent 100%), linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to bottom, transparent 0%, black 8%, black 85%, transparent 100%), linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
-            maskComposite: "intersect",
-            WebkitMaskComposite: "source-in",
-          }}
-        />
-      </AnimatePresence>
+      {/* Base layer: the previous image, held at full opacity. It never
+          fades out — it just sits there until the new image has fully
+          covered it. This is what prevents the "both images half-faded,
+          background showing through" dip. */}
+      <img
+        src={prevItem.src}
+        alt="gallery"
+        className="absolute inset-0 z-10"
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center 20%",
+          filter: `drop-shadow(0 0 40px ${prevItem.glow}) drop-shadow(0 0 80px ${prevItem.glow})`,
+          ...maskStyle,
+        }}
+      />
+
+      {/* Top layer: the incoming image, fading in over the base layer.
+          Because the base layer below is always fully opaque, this reads
+          as the image itself morphing/transforming rather than a hard cut. */}
+      <motion.img
+        key={idx}
+        src={item.src}
+        alt="gallery"
+        initial={{ opacity: 0, filter: "blur(2px)" }}
+        animate={{ opacity: 1, filter: "blur(0px)" }}
+        transition={{ duration: 1.6, ease: "easeInOut" }}
+        onAnimationComplete={() => setPrevIdx(idx)}
+        className="absolute inset-0 z-[11]"
+        style={{
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center 20%",
+          filter: `drop-shadow(0 0 40px ${item.glow}) drop-shadow(0 0 80px ${item.glow})`,
+          ...maskStyle,
+        }}
+      />
 
       {/* Dot indicators */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-1.5">
@@ -140,6 +147,7 @@ function ContactImageSlider() {
             key={i}
             onClick={() => {
               setDir(i > idx ? 1 : -1);
+              setPrevIdx(idx);
               setIdx(i);
             }}
             animate={{
