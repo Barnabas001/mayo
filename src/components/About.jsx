@@ -127,19 +127,11 @@ const DetailPanel = ({ service, allServices, onClose, onSelect }) => {
       animate={{ opacity: 1, scale: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.94, y: 20 }}
       transition={{ type: "spring", stiffness: 220, damping: 26 }}
-      className="flex w-full"
+      className="flex flex-col md:flex-row w-full"
       style={{ borderRadius: 20, overflow: "hidden", minHeight: 280 }}
     >
-      {/* ── Side switcher ── */}
-      <div
-        className="flex flex-col items-center justify-center gap-1 py-4"
-        style={{
-          width: 48,
-          background: "#1d1d2e",
-          borderRight: "1px solid rgba(255,255,255,0.06)",
-          flexShrink: 0,
-        }}
-      >
+      {/* ── Side switcher — horizontal strip on mobile, vertical column on desktop ── */}
+      <div className="flex flex-row md:flex-col items-center gap-1 px-2 py-2 md:py-4 w-full md:w-12 flex-shrink-0 overflow-x-auto md:overflow-visible border-b md:border-b-0 md:border-r border-white/[0.06] bg-[#1d1d2e]">
         {allServices.map((s, i) => {
           const isActive = s.title === service.title;
           const { color: sc } = s.color
@@ -151,19 +143,15 @@ const DetailPanel = ({ service, allServices, onClose, onSelect }) => {
               onClick={() => onSelect(s)}
               whileHover={{ scale: 1.12 }}
               whileTap={{ scale: 0.94 }}
-              className="flex items-center justify-center"
+              className="flex items-center justify-center flex-shrink-0 rounded-lg px-2.5 py-1.5 md:px-1 md:py-1.5 md:w-9 [writing-mode:horizontal-tb] md:[writing-mode:vertical-rl]"
               style={{
                 background: isActive ? sc : "transparent",
                 border: "none",
-                borderRadius: 8,
-                padding: "6px 4px",
                 cursor: "pointer",
-                writingMode: "vertical-rl",
                 color: isActive ? "#fff" : "rgba(255,255,255,0.3)",
-                fontSize: isActive ? 9 : 8,
+                fontSize: isActive ? 10 : 9,
                 fontWeight: isActive ? 700 : 400,
                 letterSpacing: 0.5,
-                width: 36,
                 textAlign: "center",
                 lineHeight: 1.2,
               }}
@@ -175,7 +163,7 @@ const DetailPanel = ({ service, allServices, onClose, onSelect }) => {
 
         {/* Animated chevron */}
         <motion.div
-          className="mt-2 cursor-pointer"
+          className="ml-2 md:ml-0 md:mt-2 cursor-pointer flex-shrink-0"
           style={{ color: "rgba(255,255,255,0.2)", fontSize: 16 }}
           animate={{ y: [0, 4, 0] }}
           transition={{ repeat: Infinity, duration: 1.8 }}
@@ -187,9 +175,8 @@ const DetailPanel = ({ service, allServices, onClose, onSelect }) => {
 
       {/* ── Icon / visual half ── */}
       <motion.div
-        className="flex items-center justify-center relative overflow-hidden"
+        className="flex items-center justify-center relative overflow-hidden w-full h-36 md:h-auto md:flex-none md:w-[200px]"
         style={{
-          flex: "0 0 200px",
           background: "#15152a",
         }}
       >
@@ -212,10 +199,8 @@ const DetailPanel = ({ service, allServices, onClose, onSelect }) => {
           className="relative z-10"
         >
           <div
-            className="flex items-center justify-center rounded-full"
+            className="flex items-center justify-center rounded-full w-24 h-24 md:w-[120px] md:h-[120px]"
             style={{
-              width: 120,
-              height: 120,
               background: `radial-gradient(circle at 35% 35%, ${accent}bb, ${color})`,
               boxShadow: `0 0 60px ${color}88`,
               border: `2px solid rgba(255,255,255,0.12)`,
@@ -224,7 +209,7 @@ const DetailPanel = ({ service, allServices, onClose, onSelect }) => {
             <img
               src={service.icon}
               alt={service.title}
-              className="w-14 h-14 object-contain"
+              className="w-12 h-12 md:w-14 md:h-14 object-contain"
               style={{ filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.5))" }}
             />
           </div>
@@ -242,11 +227,9 @@ const DetailPanel = ({ service, allServices, onClose, onSelect }) => {
           damping: 22,
           delay: 0.05,
         }}
-        className="flex flex-col justify-start relative overflow-hidden"
+        className="flex flex-col justify-start relative overflow-hidden flex-1 px-5 pt-12 pb-5 md:pt-5 md:pb-5 md:pl-[22px] md:pr-[18px]"
         style={{
-          flex: 1,
           background: `linear-gradient(135deg, ${color}f0, ${accent}cc)`,
-          padding: "20px 18px 20px 22px",
         }}
       >
         {/* Decorative corner shine */}
@@ -288,13 +271,7 @@ const DetailPanel = ({ service, allServices, onClose, onSelect }) => {
           key={service.title}
           initial={{ y: 10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          className="text-white font-black leading-tight"
-          style={{
-            fontSize: 22,
-            marginBottom: 6,
-            marginTop: 4,
-            fontFamily: "inherit",
-          }}
+          className="text-white font-black leading-tight text-[20px] md:text-[22px] mb-1.5 mt-0"
         >
           {service.title}
         </motion.h3>
@@ -305,8 +282,8 @@ const DetailPanel = ({ service, allServices, onClose, onSelect }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.08 }}
-          className="text-white leading-relaxed"
-          style={{ fontSize: 12.5, opacity: 0.85, lineHeight: 1.75 }}
+          className="text-white leading-relaxed text-[13px] md:text-[12.5px]"
+          style={{ opacity: 0.85, lineHeight: 1.75 }}
         >
           {service.description ||
             `Expert ${service.title} services crafted with precision, creativity, and years of hands-on experience building immersive digital experiences.`}
