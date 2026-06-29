@@ -6,7 +6,7 @@ import { services } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 
-// ─── SERVICE CARD (carousel tile) ────────────────────────────────────────────
+// SERVICE CARD (carousel tile) 
 
 const DEFAULT_COLORS = [
   { color: "#0f3460", accent: "#533483" },
@@ -110,7 +110,7 @@ const ServiceCard = ({ service, index, onClick }) => {
   );
 };
 
-// ─── DETAIL PANEL ─────────────────────────────────────────────────────────────
+// DETAIL PANEL 
 const DetailPanel = ({ service, allServices, onClose, onSelect }) => {
   const [showMore, setShowMore] = useState(false);
   const { color, accent } = service.color
@@ -130,7 +130,7 @@ const DetailPanel = ({ service, allServices, onClose, onSelect }) => {
       className="flex flex-col md:flex-row w-full"
       style={{ borderRadius: 20, overflow: "hidden", minHeight: 280 }}
     >
-      {/* ── Side switcher — horizontal strip on mobile, vertical column on desktop ── */}
+      {/* Side switcher — horizontal strip on mobile, vertical column on desktop */}
       <div className="flex flex-row md:flex-col items-center gap-1 px-2 py-2 md:py-4 w-full md:w-12 flex-shrink-0 overflow-x-auto md:overflow-visible border-b md:border-b-0 md:border-r border-white/[0.06] bg-[#1d1d2e]">
         {allServices.map((s, i) => {
           const isActive = s.title === service.title;
@@ -173,7 +173,7 @@ const DetailPanel = ({ service, allServices, onClose, onSelect }) => {
         </motion.div>
       </div>
 
-      {/* ── Icon / visual half ── */}
+      {/* Icon / visual half */}
       <motion.div
         className="flex items-center justify-center relative overflow-hidden w-full h-36 md:h-auto md:flex-none md:w-[200px]"
         style={{
@@ -216,7 +216,7 @@ const DetailPanel = ({ service, allServices, onClose, onSelect }) => {
         </motion.div>
       </motion.div>
 
-      {/* ── Info half ── */}
+      {/* Info half */}
       <motion.div
         key={`info-${service.title}`}
         initial={{ x: 24, opacity: 0 }}
@@ -348,7 +348,7 @@ const DetailPanel = ({ service, allServices, onClose, onSelect }) => {
   );
 };
 
-// ─── ABOUT SECTION ────────────────────────────────────────────────────────────
+// ABOUT SECTION 
 const About = () => {
   const [selected, setSelected] = useState(null);
   const scrollRef = useRef(null);
@@ -359,13 +359,13 @@ const About = () => {
 
   return (
     <>
-      {/* ── Heading ── */}
+      {/* Heading */}
       <motion.div variants={textVariant()}>
         <p className={styles.sectionSubText}>Introduction</p>
         <h2 className={styles.sectionHeadText}>Overview.</h2>
       </motion.div>
 
-      {/* ── Bio paragraph ── */}
+      {/* Bio paragraph */}
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
         className="mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]"
@@ -381,7 +381,7 @@ const About = () => {
         animations, VR modules, digital products, and AAA game projects.
       </motion.p>
 
-      {/* ── Services — card carousel + detail panel ── */}
+      {/* Services — card carousel + detail panel */}
       <div className="mt-20 w-full">
         <AnimatePresence mode="wait">
           {selected ? (

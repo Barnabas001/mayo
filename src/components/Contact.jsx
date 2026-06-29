@@ -6,7 +6,7 @@ import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 
-// ─── Import LOD images
+// Import LOD images
 import lod0 from "../assets/mayoImages/LOD0.png";
 import lod1 from "../assets/mayoImages/LOD1.png";
 import lod2 from "../assets/mayoImages/LOD2.png";
@@ -14,7 +14,7 @@ import lod3 from "../assets/mayoImages/LOD3.png";
 import lod4 from "../assets/mayoImages/LOD4.png";
 import lod5 from "../assets/mayoImages/LOD5.png";
 
-// ─── Slider images with accent colours
+// Slider images with accent colours
 const GALLERY = [
   {
     src: lod0,
