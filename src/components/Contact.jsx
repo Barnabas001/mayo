@@ -100,10 +100,7 @@ function ContactImageSlider() {
       />
 
       {/* Character image */}
-      {/* Base layer: the previous image, held at full opacity. It never
-          fades out — it just sits there until the new image has fully
-          covered it. This is what prevents the "both images half-faded,
-          background showing through" dip. */}
+
       <img
         src={prevItem.src}
         alt="gallery"
@@ -309,7 +306,7 @@ const Contact = () => {
               name="name"
               value={form.name}
               onChange={handleChange}
-              placeholder="What's your good name?"
+              placeholder="What's Your name?"
               className="bg-tertiary py-2.5 px-5 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
             />
           </label>
